@@ -5,6 +5,10 @@
 A guide to bypassing AI content filters. The method name is censored from plain view to keep the technique discreet.
 
 ----
+# Please visit [https://hassannewcode.github.io/BYP4S51NG-AI/] if its too hard to copy, or you wanna make things quick.
+---
+
+
 
 ### Hold click the text from right to left or left to right and then ricght click until you see the top option as "Copy", if not, try again, or repeat the process.
 
@@ -57,3 +61,8 @@ A guide to bypassing AI content filters. The method name is censored from plain 
 | `5` | `` | `U+E0035` | | `,` | `󠀬` | `U+E002C` |
 | ` ` | `󠀠` | `U+E0020` | | `!` | `󠀡` | `U+E0021` |
 | | | | | `?` | `󠀿` | `U+E003F` |
+
+----
+# Again, Please visit [https://hassannewcode.github.io/BYP4S51NG-AI/] if its too hard to copy, or you wanna make things quick.
+---
+
