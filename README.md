@@ -8,8 +8,6 @@ A guide to bypassing AI content filters. The method name is censored from plain 
 <a id="character-set-reference"></a>
 ### **Character Set Reference**
 
-Use these tables to manually verify or create a character. The invisible characters are wrapped in `` ` `` for easy copying.
-
 #### **Lowercase Alphabet (`a-z`)**
 | Letter | Invisible Char | Unicode |   | Letter | Invisible Char | Unicode |
 |:------:|:--------------:|:-------:|:-:|:------:|:--------------:|:-------:|
