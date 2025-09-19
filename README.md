@@ -6,7 +6,7 @@ A guide to bypassing AI content filters. The method name is censored from plain 
 
 ----
 
-### GUIDE: HOLD click the text from right to left or left to right and then ricght click until you see the top option as "Copy", if not, try again, or repeat the process.
+### Hold click the text from right to left or left to right and then ricght click until you see the top option as "Copy", if not, try again, or repeat the process.
 
 
 <a id="character-set-reference"></a>
