@@ -32,6 +32,10 @@
         .btn-primary:hover {
             background-color: #374151;
         }
+        .btn-primary:disabled {
+            background-color: #9CA3AF;
+            cursor: not-allowed;
+        }
         .label { color: #374151; }
         .input-text { color: #111827; }
         .placeholder-color::placeholder { color: #9CA3AF; }
@@ -96,8 +100,8 @@
 
                 <!-- Previews -->
                 <div class="preview-area p-4 rounded-md">
-                    <label class="label font-medium mb-2 text-sm">Final Generated Prompt</label>
-                    <textarea id="finalPrompt" class="w-full h-40 bg-transparent border-none p-0 resize-none text-gray-700 text-xs focus:outline-none" readonly></textarea>
+                    <label class="label font-medium mb-2 text-sm">Generated Prompt Preview</label>
+                    <textarea id="finalPromptDisplay" class="w-full h-40 bg-transparent border-none p-0 resize-none text-gray-700 text-xs focus:outline-none" readonly></textarea>
                 </div>
                  <!-- Action Button -->
                 <div class="mt-2">
@@ -111,6 +115,7 @@
 
     <script>
         const tagBlockStart = 0xE0000;
+        let fullPromptString = ''; // Variable to hold the raw string with invisible characters
 
         function encode(text) {
             return [...text].map(char => String.fromCodePoint(tagBlockStart + char.codePointAt(0))).join('');
@@ -121,7 +126,7 @@
             secretInput: document.getElementById('secretInput'),
             visiblePart2: document.getElementById('visiblePart2'),
             stealthModeToggle: document.getElementById('stealthModeToggle'),
-            finalPrompt: document.getElementById('finalPrompt'),
+            finalPromptDisplay: document.getElementById('finalPromptDisplay'),
             copyButton: document.getElementById('copyButton'),
         };
 
@@ -141,12 +146,16 @@
             const instruction = getSystemInstruction();
             const invisibleSecret = encode(secret);
 
-            const finalPromptText = `${instruction}\n\n${visible1}${invisibleSecret}${visible2}`;
-            elements.finalPrompt.value = finalPromptText;
+            // *** CRITICAL FIX ***
+            // Store the raw, complete string in our dedicated variable
+            fullPromptString = `${instruction}\n\n${visible1}${invisibleSecret}${visible2}`;
             
-            elements.finalPrompt.classList.add('fade-in');
+            // Update the visual display separately. This is just a preview.
+            elements.finalPromptDisplay.value = fullPromptString;
+            
+            elements.finalPromptDisplay.classList.add('fade-in');
             setTimeout(() => {
-                elements.finalPrompt.classList.remove('fade-in');
+                elements.finalPromptDisplay.classList.remove('fade-in');
             }, 300);
         }
 
@@ -157,8 +166,9 @@
         });
 
         elements.copyButton.addEventListener('click', () => {
-            const textToCopy = elements.finalPrompt.value;
-            navigator.clipboard.writeText(textToCopy).then(() => {
+            // *** CRITICAL FIX ***
+            // Copy the raw string from our variable, not from the display textarea
+            navigator.clipboard.writeText(fullPromptString).then(() => {
                 const originalText = elements.copyButton.textContent;
                 elements.copyButton.textContent = 'Copied';
                 elements.copyButton.disabled = true;
